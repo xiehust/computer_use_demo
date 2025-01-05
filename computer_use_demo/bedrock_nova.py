@@ -110,9 +110,11 @@ def _convert_messages_to_nova(messages:list):
 class BedrockNova:
     def __init__(self, model_id=NOVA_PRO_MODEL_ID):
         self.model_id = model_id
-        session = boto3.session.Session(
-                region_name=DEFAULT_REGION
-            )
+        profile_name = os.environ.get("AWS_PROFILE", None)
+        if profile_name is not None:
+            session = boto3.session.Session(profile_name=profile_name,region_name=DEFAULT_REGION)
+        else:
+            session = boto3.session.Session(region_name=DEFAULT_REGION)
         self.bedrock_runtime = session.client(service_name = 'bedrock-runtime')
 
     

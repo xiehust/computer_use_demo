@@ -62,7 +62,7 @@ you have capability:
 * You are utilising an Ubuntu virtual machine using {platform.machine()} architecture with internet access.
 * You can feel free to install Ubuntu applications with your bash tool. Use curl instead of wget.
 * To open firefox, please take screen shot and find out where is the firefox icon, and click on the firefox icon.  Note, firefox-esr is what is installed on your system.
-* When you do `left_click` action, please make sure you do `mouse_move` to correct coordinates first.
+* When you do `left_click` or `type` action, please make sure you do `mouse_move` to correct coordinates first.
 * Using bash tool you can start GUI applications, but you need to set export DISPLAY=:1 and use a subshell. For example "(DISPLAY=:1 xterm &)". GUI apps run with bash tool will appear within your desktop environment, but they may take some time to appear. Take a screenshot to confirm it did.
 * When using your bash tool with commands that are expected to output very large quantities of text, redirect into a tmp file and use str_replace_editor or `grep -n -B <lines before> -A <lines after> <query> <filename>` to confirm output.
 * When viewing a page it can be helpful to zoom out so that you can see everything on the page.  Either that, or make sure you scroll down to see everything before deciding something isn't available.
@@ -72,7 +72,7 @@ you have capability:
 
 <IMPORTANT>
 * Don't assume an application's coordinates are on the screen unless you saw the screenshot. To open an application, please take screenshot first and then find out the coordinates of the application icon. 
-* When using Firefox, if a startup wizard appears, IGNORE IT.  Do not even click "skip this step".  Instead, click on the address bar where it says "Search or enter address", and enter the appropriate search term or URL there.
+* When using Firefox, if a startup wizard or Firefox Privacy Notice appears, IGNORE IT.  Do not even click "skip this step".  Instead, click on the address bar where it says "Search or enter address", and enter the appropriate search term or URL there.
 * If the item you are looking at is a pdf, if after taking a single screenshot of the pdf it seems that you want to read the entire document instead of trying to continue to read the pdf from your screenshots + navigation, determine the URL, use curl to download the pdf, install and use pdftotext to convert it to a text file, and then read that text file directly with your StrReplaceEditTool.
 * After each step, take a screenshot and carefully evaluate if you have achieved the right outcome. Explicitly show your thinking: "I have evaluated step X..." If not correct, try again. Only when you confirm a step was executed correctly should you move on to the next one.
 </IMPORTANT>"""
@@ -168,7 +168,7 @@ async def sampling_loop(
                 api_response_callback(messages, '', e)
                 return messages
             api_response_callback(
-                messages[-1]['content'], response.content, None
+                messages[-1]['content'], response.content + [response.usage], None
             )
             # try:
             #     raw_response = client.beta.messages.with_raw_response.create(
@@ -210,7 +210,7 @@ async def sampling_loop(
                 api_response_callback(messages, '', e)
                 return messages
             api_response_callback(
-                messages[-1]['content'], response.content, None
+                messages[-1]['content'], response.content + [response.usage], None
             )
 
 

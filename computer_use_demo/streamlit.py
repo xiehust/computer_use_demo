@@ -85,7 +85,7 @@ def setup_state():
     if "tools" not in st.session_state:
         st.session_state.tools = {}
     if "only_n_most_recent_images" not in st.session_state:
-        st.session_state.only_n_most_recent_images = 3
+        st.session_state.only_n_most_recent_images = 1
     if "custom_system_prompt" not in st.session_state:
         st.session_state.custom_system_prompt = load_from_storage("system_prompt") or ""
     if "hide_images" not in st.session_state:
@@ -106,7 +106,7 @@ async def main():
 
     st.markdown(STREAMLIT_STYLE, unsafe_allow_html=True)
 
-    st.title("Claude Computer Use Demo For Amazon Nova")
+    st.title("Computer Use Demo For Amazon Nova")
 
     if not os.getenv("HIDE_WARNING", False):
         st.warning(WARNING_TEXT)

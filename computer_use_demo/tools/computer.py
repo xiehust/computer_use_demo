@@ -262,6 +262,7 @@ class ComputerTool(BaseAnthropicTool):
                 return round(x / x_scaling_factor), round(y / y_scaling_factor)
             # for nova don't require scale down to fixed dimesion
             return x, y
+            # return round(x * x_scaling_factor), round(y * y_scaling_factor)
     
         else:
             ratio = self.width / self.height

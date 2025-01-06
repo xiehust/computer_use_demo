@@ -1,6 +1,7 @@
 import boto3
 import os
 import json
+from boto3.session import Config
 from anthropic.types.beta import (
     BetaUsage,
     BetaContentBlockParam,
@@ -111,10 +112,16 @@ class BedrockNova:
     def __init__(self, model_id=NOVA_PRO_MODEL_ID):
         self.model_id = model_id
         profile_name = os.environ.get("AWS_PROFILE", None)
+        config = Config(signature_version = 'v4',
+                retries = {
+                    'max_attempts': 10,                },
+                read_timeout=120
+)
+        
         if profile_name is not None:
-            session = boto3.session.Session(profile_name=profile_name,region_name=DEFAULT_REGION)
+            session = boto3.session.Session(profile_name=profile_name,region_name=DEFAULT_REGION,config=config)
         else:
-            session = boto3.session.Session(region_name=DEFAULT_REGION)
+            session = boto3.session.Session(region_name=DEFAULT_REGION,config=config)
         self.bedrock_runtime = session.client(service_name = 'bedrock-runtime')
 
     

@@ -6,6 +6,8 @@ computer_tool_description = """Use a mouse and keyboard to interact with a compu
 - Whenever you intend to move the cursor to click on an element like an icon, you should consult a screenshot to determine the coordinates of the element before moving the cursor.
 - If you tried clicking on a program or link but it failed to load, even after waiting, try adjusting your cursor position so that the tip of the cursor visually falls on the element that you want to click.
 - Make sure to click any buttons, links, icons, etc with the cursor tip in the center of the element. Don't click boxes on their edges unless asked.
+- When you do `left_click` or `type` action, please make sure you do `mouse_move` to correct coordinates first.
+
 """ 
         
 computer_tool_input_schema = {

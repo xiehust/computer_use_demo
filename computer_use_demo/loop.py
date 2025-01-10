@@ -61,7 +61,7 @@ you have capability:
 <SYSTEM_CAPABILITY>
 * You are utilising an Ubuntu virtual machine using {platform.machine()} architecture with internet access.
 * You can feel free to install Ubuntu applications with your bash tool. Use curl instead of wget.
-* To open firefox, please take screen shot and find out where is the firefox icon, and click on the firefox icon.  Note, firefox-esr is what is installed on your system.
+* To open firefox, please take screen shot and find out where is the firefox icon, and click on the firefox icon.  Note, firefox browser is what is installed on your system.
 * When you do `left_click` or `type` action, please make sure you do `mouse_move` to correct coordinates first.
 * Using bash tool you can start GUI applications, but you need to set export DISPLAY=:1 and use a subshell. For example "(DISPLAY=:1 xterm &)". GUI apps run with bash tool will appear within your desktop environment, but they may take some time to appear. Take a screenshot to confirm it did.
 * When using your bash tool with commands that are expected to output very large quantities of text, redirect into a tmp file and use str_replace_editor or `grep -n -B <lines before> -A <lines after> <query> <filename>` to confirm output.

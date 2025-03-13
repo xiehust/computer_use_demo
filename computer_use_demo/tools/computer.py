@@ -15,7 +15,7 @@ from .run import run
 
 OUTPUT_DIR = "/tmp/outputs"
 
-TYPING_DELAY_MS = 12
+TYPING_DELAY_MS = 100
 TYPING_GROUP_SIZE = 50
 
 Action = Literal[
